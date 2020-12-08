@@ -5,7 +5,7 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
-// const adminUserRouter = require('./src/api/routers/admin.user.router');
+const registryRouter = require('./src/api/routers/registry.router');
 const { formErrorObject, errorHandling, MAIN_ERROR_CODES } = require('./src/services/errorHandling');
 
 
@@ -20,7 +20,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use('/api/auth', authRouter);
+app.use('/api/registry', registryRouter);
 
 app.use('*', (req, res, next) => {
     return next(createError(formErrorObject(MAIN_ERROR_CODES.NOT_FOUND)));

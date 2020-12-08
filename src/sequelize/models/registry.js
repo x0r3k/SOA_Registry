@@ -1,23 +1,39 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class registry extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+module.exports = (sequelize, DataType) => {
+  const registryTable = sequelize.define('registry', {
+    id: {
+      type: DataType.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    code: {
+      type: DataType.STRING,
+      allowNull: false,
+      unique: true
+    },
+    name: {
+      type: DataType.STRING(200),
+      allowNull: false,
+      unique: true
+    },
+    description: {
+      type: DataType.TEXT,
+      allowNull: true,
+    },
+    url: {
+      type: DataType.STRING(200),
+      allowNull: false,
+    },
+    port: {
+      type: DataType.SMALLINT.UNSIGNED,
+      allowNull: true,
+    },
+    status: {
+      type: DataType.ENUM('on', 'off'),
+      allowNull: false,
     }
-  };
-  registry.init({
-    firstName: DataTypes.STRING
   }, {
-    sequelize,
-    modelName: 'registry',
+    freezeTableName: true,
   });
-  return registry;
+
+  return registryTable;
 };
