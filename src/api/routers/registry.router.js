@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getServiceInstance, getCarById } = require('../controllers/registry.controller');
+const { getServiceInstance, createServiceInstance, updateServiceInstance, deleteServiceInstance } = require('../controllers/registry.controller');
 const {
     param_Service_Code,
     body_Service_Code,
@@ -18,38 +18,38 @@ router.get(
     getServiceInstance
 );
 
-// router.post(
-//     '/createServiceInstance',
-//     [
-//         body_Service_Code(true),
-//         body_Service_Name(true),
-//         body_Service_Description(false),
-//         body_Service_Url(true),
-//         body_Service_Port(false),
-//         body_Service_Status(false)
-//     ],
-//     getCarById
-// );
+router.post(
+    '/createServiceInstance',
+    [
+        body_Service_Code(true),
+        body_Service_Name(true),
+        body_Service_Description(false),
+        body_Service_Url(true),
+        body_Service_Port(false),
+        body_Service_Status(false)
+    ],
+    createServiceInstance
+);
 
-// router.put(
-//     '/updateServiceInstance',
-//     [
-//         body_Service_Code(true),
-//         body_Service_Name(false),
-//         body_Service_Description(false),
-//         body_Service_Url(false),
-//         body_Service_Port(false),
-//         body_Service_Status(false)
-//     ],
-//     getCarById
-// );
+router.put(
+    '/updateServiceInstance',
+    [
+        body_Service_Code(true),
+        body_Service_Name(false),
+        body_Service_Description(false),
+        body_Service_Url(false),
+        body_Service_Port(false),
+        body_Service_Status(false)
+    ],
+    updateServiceInstance
+);
 
-// router.delete(
-//     '/deleteServiceInstance',
-//     [
-//         body_Service_Code(true),
-//     ],
-//     getCarById
-// );
+router.delete(
+    '/deleteServiceInstance',
+    [
+        body_Service_Code(true),
+    ],
+    deleteServiceInstance
+);
 
 module.exports = router;
