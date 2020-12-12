@@ -8,7 +8,9 @@
     "db:seed:all": "sequelize db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -e js,json index.js",
-    "start:manual": "sequelize db:drop && sequelize db:create && npm run db:migrate && npm run db:seed:all && npm start"
+    "start:manual": "sequelize db:drop && sequelize db:create && npm run db:migrate && npm run db:seed:all && npm start",
+    "start:docker": "env NODE_ENV=docker nodemon -e js,json index.js",
+    "start:manual:docker": "env NODE_ENV=docker sequelize db:drop && env NODE_ENV=docker sequelize db:create && env NODE_ENV=docker npm run db:migrate && env NODE_ENV=docker npm run db:seed:all && env NODE_ENV=docker npm start"
   },
   "repository": {
     "type": "git",

@@ -21,8 +21,7 @@
     "username": "root",
     "password": "0000",
     "database": "soa_registry",
-    "host": "mysql",
-    "port": "3306",
+    "host": "localhost",
     "dialect": "mysql",
     "pool": {
       "max": 20,
